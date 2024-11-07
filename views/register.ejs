@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <header class="header1">
+        <h1 class="naslov1">Register Page</h1>
+
+        <nav class="nav-container">
+            <div class="nav-links">
+                <a href="/xss" class="nav-item" id="xss">Cross-site scripting (XSS)</a>
+                <a href="/" class="nav-item" id="home" style="width: 120px;">Home</a>
+                <a href="/user" class="nav-item" id="csrf">User</a>
+            </div>
+        </nav>
+    </header>
+
+    <nav class="login-register">
+        <div class="loginRegister">
+            <a href="/login" class="login" id="login">Login</a>
+            <a href="/register" class="register" id="register">Register</a>
+        </div>
+    </nav>
+
+    <div class="login-form">
+         <form action="/register" id="registerForm" method="post">
+
+            <fieldset>
+                <legend>Ranjivost</legend>
+                <p><label style="background-color: #e0f7fa"><input type="radio" name="role" value="off" checked>Isključena</label></p>
+                <p><label style="background-color: #e0f7fa"><input type="radio" name="role" value="on">Uključena</label></p>
+            </fieldset>
+
+            <label for="username">Username:</label>
+            <input type="text" name="username">
+  
+            <label for="password">Password:</label>
+            <input type="password" name="password">
+
+            <button type="submit">Submit</button>
+         </form>
+  
+      </div>
+
+      <script>
+        document.getElementById('registerForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    const result = await response.json();
+                    if (response.status === 400) {
+                        alert(result.error); // Show alert if password is weak
+                    } else if (response.status === 409) {
+                        alert(result.error); // Show alert if user already exists
+                    }
+                } else {
+                    alert("Uspješna registracija!");
+                    window.location.href = '/login'; // Redirect on successful registration
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Došlo je do greške na serveru. Pokušajte ponovo.');
+            }
+        });
+    </script>
+
+    
+</body>
+</html>

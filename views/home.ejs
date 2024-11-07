@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstracija ranjivosti</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <header class="header1">
+        <h1 class="naslov1">Demonstracija ranjivosti</h1>
+
+        <nav class="nav-container">
+            <div class="nav-links">
+                <a href="/xss" class="nav-item" id="xss">Cross-site scripting (XSS)</a>
+                <a href="/" class="nav-item" id="home" style="width: 120px;">Home</a>
+                <a href="/user" class="nav-item" id="csrf">User</a>
+            </div>
+        </nav>
+    </header>
+
+    <nav class="login-register">
+        <div class="loginRegister">
+            <a href="/login" class="login" id="login">Login</a>
+            <a href="/register" class="register" id="register">Register</a>
+        </div>
+    </nav>
+
+    <div class="upute">
+        <h3 class="tekst">Upute</h3>
+        <p class="tekst">Omogućen je najprimitivniji oblik registracije i prijave korisnika na stranicu kako bi se dobio cookie.
+            Cilj je demonstrirati krađu cookieja, iz tog razloga je to omogućeno.
+            Klikom na <b>Register</b> odlazi se na stranicu za registraciju. Klikom na <b>Login</b> odlazi se na stranicu za prijavu.
+            Klikom na <b>User</b> odlazi se na stranicu čiji pristup je dozvoljen samo uspješno prijavljenim korisnicima.
+            Ako niste prijavljeni preusmjerit će Vas na stranicu za prijavu, ako jeste onda ćete imati pristup toj stranici i postojat će mogućnost odjave.
+        </p>
+        <p class="tekst">
+            Klikom na <b>Home</b> vraćate se na ovu (početnu) stranicu.
+            Klikom na <b>Cross-site scripting (XSS)</b> odlazite na stranicu koja će demonstrirati XSS napad.
+        </p>
+        <p class="tekst">
+            Na stranici <b>Cross-site scripting (XSS)</b> omogućeno je uključivanje/isključivanje ranjivosti
+            tako da web stranica postane podložna XSS napadima. Na stranici <b>Register</b> i <b>Login</b>
+            postoje iste mogućnosti za uključivanje/isključivanje ranjivosti loše  autentifikacije.
+        </p>
+    </div>
+
+</body>
+</html>

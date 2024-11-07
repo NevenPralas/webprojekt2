@@ -1,0 +1,215 @@
+*{
+    background-color: #e0f7fa;
+}
+
+header {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    padding: 50px 16px; 
+}
+
+body,h1 {
+    font-family: "Raleway", Arial, sans-serif
+}
+
+h1 {
+    letter-spacing: 6px;
+}
+
+.nav-item {
+    text-decoration: none; 
+    font-family: "Raleway", Arial, sans-serif; 
+    color: #333; 
+    padding: 10px 15px; 
+    border: 2px solid #333; 
+    border-radius: 10px; 
+    transition: background-color 0.3s;
+    display: inline-block;
+    width: 300px;
+    text-align: center;
+}
+
+.nav-item:hover {
+    background-color: #e0e0e0;
+}
+
+#home {
+    font-weight: bold;
+    background-color: red;
+}
+
+#home:hover {
+    background-color: pink;
+}
+
+#xss, #csrf {
+    font-weight: bold;
+    background-color: rgb(115, 0, 255);
+}
+
+#xss:hover, #csrf:hover {
+    background-color: rgb(192, 243, 255);
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+/* Stil za svaku grupu elemenata */
+form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+form input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Stil za dugme */
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+label {
+    background-color: white;
+}
+
+.login-register {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* razmak ispod glavne navigacije */
+}
+
+.loginRegister a {
+    text-decoration: none;
+    font-family: "Raleway", Arial, sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #00796b; /* tamnija nijansa za razliku od glavne navigacije */
+    padding: 10px 15px;
+    margin: 0 10px; /* razmak između linkova */
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+}
+
+.loginRegister a:hover {
+    background-color: #004d40; /* hover boja za login i register */
+}
+
+.upute {
+    background-color: #ffffff; /* bela pozadina */
+    color: #000000; /* crna boja teksta */
+    padding: 20px; /* razmak unutar diva */
+    border-radius: 12px; /* zaobljeni rubovi */
+    border: 2px solid #003366; /* tamno plavi okvir */
+    max-width: 600px; /* širina diva da ne zauzme ceo ekran */
+    margin: 20px auto; /* centriranje diva na stranici */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* blagi efekat senke */
+}
+
+.upute * {
+    background-color: #ffffff; /* bela pozadina za sve elemente unutar .upute */
+}
+
+.upute h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #003366; /* tamno plava boja za naslov */
+}
+
+.upute p {
+    line-height: 1.6; /* poboljšana čitljivost */
+    margin-bottom: 15px;
+}
+
+/* Centriranje login forme */
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh; /* formu centriramo po vertikali */
+}
+
+/* Stilovi za formu */
+.login-form form {
+    background-color: #ffffff; /* bela pozadina */
+    padding: 30px; /* dodatni padding */
+    border-radius: 10px; /* zaobljeni rubovi */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* jača senka za efekat */
+    width: 350px; /* malo šira forma */
+}
+
+/* Stil za label */
+.login-form form label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* Stil za unos podataka */
+.login-form form input[type="text"],
+.login-form form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Stil za dugme za submit */
+.login-form form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00796b; /* tamnija nijansa za submit dugme */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.login-form form button:hover {
+    background-color: #004d40; /* hover efekat */
+}

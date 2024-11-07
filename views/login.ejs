@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <header class="header1">
+        <h1 class="naslov1">Login Page</h1>
+        <nav class="nav-container">
+            <div class="nav-links">
+                <a href="/xss" class="nav-item" id="xss">Cross-site scripting (XSS)</a>
+                <a href="/" class="nav-item" id="home" style="width: 120px;">Home</a>
+                <a href="/user" class="nav-item" id="csrf">User</a>
+            </div>
+        </nav>
+    </header>
+
+    <nav class="login-register">
+        <div class="loginRegister">
+            <a href="/login" class="login" id="login">Login</a>
+            <a href="/register" class="register" id="register">Register</a>
+        </div>
+    </nav>
+   
+    <div class="login-form">
+       <form id="loginForm">
+
+        <fieldset>
+            <legend>Ranjivost</legend>
+            <p><label style="background-color: #e0f7fa"><input type="radio" name="role" value="off" checked>Isključena</label></p>
+            <p><label style="background-color: #e0f7fa"><input type="radio" name="role" value="on">Uključena</label></p>
+        </fieldset>
+
+          <label for="username">Username:</label>
+          <input type="text" name="username" required>
+
+          <label for="password">Password:</label>
+          <input type="password" name="password" required>
+
+          <button type="submit">Submit</button>
+
+          <label id="labela"></label>
+       </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+            event.preventDefault();  // Sprječava automatsko slanje forme
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            const submitButton = this.querySelector("button[type='submit']");
+            
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    if(response.status==400){
+
+                        document.getElementById('labela').innerHTML = ' ';
+
+                    const result = await response.json();  // Dobivamo JSON odgovor
+                    alert(result.error);  // Prikazujemo alert poruku
+                    
+                    // Blokiramo dugme na 3 sekunde
+                    submitButton.disabled = true;
+                    setTimeout(() => {
+                        submitButton.disabled = false;
+                    }, 3000);
+
+
+                }
+                else{
+                    //dodaj samo natpis kao <p> element sa porukom result.error
+
+                        const result = await response.json();
+                    
+                    document.getElementById('labela').innerHTML = result.error;
+
+                    
+                }
+                } else {
+                    alert("Uspješna prijava!");
+                    window.location.href = '/user';  // Preusmjeravanje nakon uspješne prijave
+                    document.getElementById('labela').innerHTML = ' ';
+                }
+            } catch (error) {
+                console.error('Greška:', error);
+                alert('Došlo je do greške na serveru. Pokušajte ponovo.');
+            }
+        });
+    </script>
+
+</body>
+</html>
