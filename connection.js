@@ -5,7 +5,10 @@ const client = new Client({
     user: "dbwebprojekt_user",
     port: 5432,
     password: "gXdmvhq6OHu6LkW8ZUevRRCcPdAX6rd2",
-    database: "dbwebprojekt"
+    database: "dbwebprojekt",
+    ssl: {
+        rejectUnauthorized: false, 
+      }
 });
 
 const createUser = async(username, password) => {
