@@ -1,11 +1,11 @@
 const {Client} = require('pg');
 
 const client = new Client({
-    host: "csdb9q88fa8c73900h00-a.frankfurt-postgres.render.com",
-    user: "dbwebprojekt_user",
+    host: "dpg-ct0bh6hopnds73aatn60-a.frankfurt-postgres.render.com",
+    user: "dbweb_t92a_user",
     port: 5432,
-    password: "gXdmvhq6OHu6LkW8ZUevRRCcPdAX6rd2",
-    database: "dbwebprojekt",
+    password: "jGtIJQAWDUJ964c3ikX6I2AQWgujC4Qx",
+    database: "dbweb_t92a",
     ssl: {
         rejectUnauthorized: false, 
       }
